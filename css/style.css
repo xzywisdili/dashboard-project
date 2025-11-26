@@ -1,0 +1,156 @@
+/* ===== 全局布局 ===== */
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* 只让 body 做 flex 容器，不要把 html 也设成 flex */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;          /* 左右布局 */
+    flex-direction: row;
+    overflow: hidden;
+}
+
+/* ===== 左侧侧边栏 ===== */
+#sidebar {
+    width: 300px;
+    background-color: #f8f9fa;
+    border-right: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+#sidebar h2 { 
+    margin-top: 0; 
+    color: #2c3e50; 
+    font-size: 1.4rem; 
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+}
+
+
+
+.subtitle { 
+    color: #7f8c8d; 
+    font-size: 0.9rem; 
+    margin-bottom: 20px; 
+}
+
+/* ===== 右侧地图区域 ===== */
+#main-content {
+    flex-grow: 1;
+    position: relative;
+    height: 100vh;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+}
+
+.leaflet-marker-icon {
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.28));
+}
+
+
+/* ===== 图例样式 ===== */
+.legend-item {
+    background: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #eee;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background 0.2s;
+}
+
+.legend-item:hover { 
+    background-color: #e9ecef; 
+}
+
+.legend-icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    margin-right: 12px;
+    border: 1px solid #666;
+}
+
+.legend-item {
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+    padding: 12px;
+    background: #fff;
+    transition: all .2s;
+}
+.legend-item:hover {
+    transform: translateX(3px);
+    background: #f3f6f9;
+}
+
+
+/* Reset 按钮固定在侧边栏底部 */
+#reset-view {
+    margin-top: auto;
+    padding: 10px;
+    background-color: #1f497d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+#reset-view:hover { 
+    background-color: #16365f; 
+}
+
+/* ===== Loading 提示 ===== */
+.loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 1000;
+    display: none;
+}
+
+/* ===== 小屏响应式：上下结构 ===== */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;    /* 只改 body，就行了 */
+    }
+    
+    #sidebar {
+        width: 100%;
+        height: auto;
+        max-height: 30vh;
+    }
+    
+    #main-content {
+        height: 70vh;
+    }
+}
+
+.legend-icon-img {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+}
